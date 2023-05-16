@@ -1,14 +1,15 @@
 // DOMの読み込みが終わったらfunction()の中の処理を実行します。
 $(document).ready(function () {
     // 「国語、英語、数学、理科、社会」の点数（入力値）を取得して合計点と平均点を出すロジック
+    let subject_points = [Number($('#national_language').val()),
+                                Number($('#english').val()),
+                                Number($('#mathematics').val()),
+                                Number($('#science').val()),
+                                Number($('#society').val())
+                                ];
     function score_indicate() {
         // 変数「subject_points」に「国語、英語、数学、理科、社会」の点数の配列を代入します。
-        let subject_points = [Number($('#national_language').val()),
-        Number($('#english').val()),
-        Number($('#mathematics').val()),
-        Number($('#science').val()),
-        Number($('#society').val())
-        ];
+        
         // 変数「sum」に「国語、英語、数学、理科、社会」の点数を足します。
         let sum = subject_points[0];
         sum = sum + subject_points[1];
@@ -25,38 +26,34 @@ $(document).ready(function () {
     };
     // 平均点数を取得し、取得した平均点数から「A、B、C、D」にランク分けするロジックを記述する。
     function get_achievement () {
-         let p =  1;
-        if (p > 79) {
-            a = "A";
+         let average = $("#average_indicate").text();
+         console.log(average)
+        if (average >= 80) {
+            return "A";
         }
-        else if (p > 59) {
-            a = "B";
+        else if (average >= 60) {
+            return "B";
         }
-        else if (p > 39) {
-            a = "C";
+        else if (average >= 40) {
+            return "C";
         }
         else {
-            a = "D";
+            return "D";
         }
-        return "a";
+        
     };
     // 各教科の点数を取得し、取得した点数から「合格、不合格」の判断を下すロジックを作ります。
+    console.log
     function get_pass_or_failure() {
-        let subject_points = [Number($('#national_language').val()),
-        Number($('#english').val()),
-        Number($('#mathematics').val()),
-        Number($('#science').val()),
-        Number($('#society').val())
-        ];
-        // 変数「number」に入力した教科の数を代入します。
-        let number = subject_points.length;
-        // 変数「judge」に"合格"を代入しておきます。
-        let judge = "合格";
-        // 入力したそれぞれの教科のうち、1つでも60点よりも低い点数があった場合、変数「judge」に"不合格"を再代入する処理を記述する。
-        // ヒント：配列の繰り返し処理について調べてみましょう。
-        return judge;
-    };
-    // 最終的なジャッジのロジックを作ります。
+                for(let i = 0; i<subject_points.length; i++){
+                if(subject_points[i]<60){
+                return "不合格"}
+            }
+            return "合格"
+             
+
+    }
+        
     function judgement() {
         // 変数「achievement」に「get_achievement()の戻り値」を代入します。
         let achievement = get_achievement();

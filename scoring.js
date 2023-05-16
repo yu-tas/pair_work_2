@@ -17,24 +17,28 @@ $(document).ready(function () {
         sum = sum + subject_points[4];
         // 「合計点：」(id="sum_indicate")に変数「sum」(合計点)を出力させます。
         $("#sum_indicate").text(sum);
-
+        average = sum / subject_points.length
+        $("#average_indicate").text(average);
         // 「平均点：」に各教科の平均点を出力する処理を記述する。
         // ヒント：変数「average」に平均値を出して代入しましょう(平均をとりたい数の合計点数(sum) / 全体の個数)
         // ヒント：全体の個数はlengthメソッドを使って求めます。(lengthメソッド: 文字列の長さや配列の要素数などを取得するメソッド)
     };
     // 平均点数を取得し、取得した平均点数から「A、B、C、D」にランク分けするロジックを記述する。
-    function get_achievement() {
-        // 変数「averageIndicate」に
-        // 平均点数をHTML上のid="average_indicate"から取得して代入します。
-        let averageIndicate = $("#average_indicate").text();
-        console.log(averageIndicate)
-        // もし「averageIndicate」が80以上なら"A"を返します。
-        if (averageIndicate >= 80) {
-            return "A";
+    function get_achievement () {
+         let p =  1;
+        if (p > 79) {
+            a = "A";
         }
-        // もし「averageIndicate」が60以上なら"B"を返します。
-        // もし「averageIndicate」が40以上なら"C"を返します。
-        // もし「averageIndicate」がそれ以外なら"D"を返します。
+        else if (p > 59) {
+            a = "B";
+        }
+        else if (p > 39) {
+            a = "C";
+        }
+        else {
+            a = "D";
+        }
+        return "a";
     };
     // 各教科の点数を取得し、取得した点数から「合格、不合格」の判断を下すロジックを作ります。
     function get_pass_or_failure() {
